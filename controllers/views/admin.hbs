@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <link rel="stylesheet" href="/style.css">
+    <title>Admin-NEUB Picnic Registration</title>
+</head>
+<body>
+    {{#if title}}
+    <nav>
+        <h2>Admin-NEUB Picnic Registration</h2>
+        <ul>
+            {{!-- <li><a href="/">Register For Picnic</a></li>
+            <li><a href="/login">Admin Login</a></li>
+            <li><a href="/gallery">Gallery</a></li> --}}
+        </ul>
+    </nav>
+    <div style="margin: 5px; width:100%; text-align: center; ">
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal1">
+                Update Admin info. 
+            </button>
+            
+
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal6">
+                Manage Team. 
+            </button>
+
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal3">
+                Upload Photo. 
+            </button>
+          
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal5">
+                See messages. 
+            </button>
+            {{!-- <li><a href="/">Register For Picnic</a></li>
+            <li><a href="/login">Admin Login</a></li>
+            <li><a href="/gallery">Gallery</a></li> --}}
+    </div>
+
+
+
+
+    <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Admin Information</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form method="POST">
+      <div class="modal-body">
+          {{#with data3}}
+          <label for="uname4" style="width: 20%;" >User Nmae:</label>
+          <input type="text" id="uname4" name="uname4" value="{{this.uname}}" style="width: 78%;"><br>
+          
+          <label for="pass4" style="width: 20%;" >Password:</label>
+          <input type="text" id="pass4" name="pass4" value="{{this.password}}" style="width: 78%;"><br>
+
+          <label for="email4" style="width: 20%;" >Email:</label>
+          <input type="email" id="email4" name="email4" value="{{this.email}}" style="width: 78%;"><br>
+
+          <label for="head4" style="width: 20%;" >Headline:</label>
+          <input type="text" id="head4" name="head4" value="{{this.headline}}" style="width: 78%;"><br>
+
+          <label for="des4" style="width: 20%;" >Description:</label>
+          <textarea id="des4" name="des4" rows="4" cols="48" >{{this.des}}</textarea>
+          
+          <label for="con4" style="width: 20%;" >Contact Info.:</label>
+          <textarea id="con4" name="con4" rows="2" cols="48" >{{this.contactinfo}}</textarea>
+
+          <label for="pay4" style="width: 20%;" >Payment Info.:</label>
+          <textarea id="pay4" name="pay4" rows="4" cols="48" >{{this.paymentinfo}}</textarea>
+          
+
+          {{/with}}
+      </div>
+      <div class="modal-footer">
+        <button type="submit" formaction="/auth/updatead" class="btn btn-primary">Save</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+<div class="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Admin Information</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form action="/auth/upimg" method="POST">
+      <div class="modal-body">
+
+
+
+        <label for="img">Image Link:</label>   
+        <input type="text" id="img" name="img" style="width: 75%;">
+
+        <br><br>
+
+        <label for="ttl">Image Title:</label>   
+        <input type="text" id="ttl" name="ttl" style="width: 75%;">
+      
+
+      
+
+      </div>
+      
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Upload</button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<div class="modal fade" id="exampleModal5" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">All messages</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        {{#each data2}}
+              <div class="mb-3" style="background-color: #bfbfbf;">
+                  <label>{{this.id}}. By: {{this.email}}</label><br>
+                  <label>Message: {{this.txt}}</label>
+              </div>
+        {{/each}}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+<div class="modal fade" id="exampleModal6" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Manage Team</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form method="POST">
+      <div class="modal-body">
+            {{#with data4}}
+                
+                <label  style="width: 37%;"><b>{{this.[0].tname}}</b></label>
+                <label  >Advisor: </label>
+                <input type="text" id="t1" name="t1" value="{{this.[0].advisor}}" style="width: 37%;">
+                <br>
+
+                
+                <label  style="width: 37%;"><b>{{this.[1].tname}}</b></label>
+                <label  >Advisor: </label>
+                <input type="text" id="t2" name="t2" value="{{this.[1].advisor}}" style="width: 37%;">
+                <br>
+                
+                
+                <label  style="width: 37%;"><b>{{this.[2].tname}}</b></label>
+                <label   >Advisor: </label>
+                <input type="text" id="t3" name="t3" value="{{this.[2].advisor}}" style="width: 37%;">
+                <br>
+                
+                
+                <label  style="width: 37%;"><b>{{this.[3].tname}}</b></label>
+                <label  >Advisor: </label>
+                <input type="text" id="t4" name="t4" value="{{this.[3].advisor}}" style="width: 37%;">
+                <br>
+            {{/with}}
+      </div>
+      <div class="modal-footer">
+        <button type="submit" formaction="/auth/svtm" class="btn btn-primary">Save</button>
+      </div>
+      </form>
+
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add To Team</h5>
+      </div>
+
+      
+
+
+      <form method="POST">
+
+      <div class="modal-body">
+
+        <label for="uid9" style="width: 20%;" >Unique ID:</label>
+        <input type="number" id="uid9" name="uid9"  style="width: 78%; " >
+
+
+        <div class="mb-3">
+                        <br>
+                        <label class="form-label">Teams: </label><br>
+                        {{#each data4}}
+                        <input type="radio" id="{{this.tname}}" name="tm9" value="{{this.tname}}" required>
+                        <label for="M">{{this.tname}}</label><br>
+                        {{/each}}
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" formaction="/auth/adtotm" class="btn btn-primary">Add to Team</button>
+        <button type="submit" formaction="/auth/dlfrtm" class="btn btn-danger">Delete From Team</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+    <div class="container">
+        <br>
+        <center><h3><u>Full Registration List</u></h3></center>
+        <br>
+        <table class="table table table-hover">
+            <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Semester</th>
+            <th>Section</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>T-shirt size</th>
+            <th>Manage</th>
+            </tr>
+            {{#each data}}
+                <tr>
+                    <td>{{this.sid}}</td>
+                    <td>{{this.name}}</td>
+                    <td>{{this.sem}}</td>
+                    <td>{{this.sec}}</td>
+                    <td>{{this.email}}</td>
+                    <td>{{this.phone}}</td>
+                    <td>{{this.size}}</td>
+                    <td> 
+                      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#nm{{this.uid}}">
+                        Manage 
+                      </button>
+                    </td>
+
+
+
+
+
+                      <div class="modal fade" id="nm{{this.uid}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Manage {{this.uid}}</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+
+
+
+
+                          <form method="POST">
+                          <div class="modal-body" >
+                                  
+
+                                <div class="mb-3" style="background-color: #bfbfbf; padding: 5%;">
+
+                                      <label for="uid2" style="width: 20%;" >Unique ID:</label>
+                                      <input type="number" id="uid2" name="uid2" value="{{this.uid}}" style="width: 78%; " readonly>
+                                      
+                                      <br>
+
+                                      <label for="id2" style="width: 20%;" >ID:</label>
+                                      <input type="number" id="id2" name="id2" value="{{this.sid}}" style="width: 78%;"><br>
+
+
+                                      <label for="name2" style="width: 20%;" >Name:</label>
+                                      <input type="text" id="name2" name="name2" value="{{this.name}}" style="width: 78%;"><br>
+
+
+                                      <label for="sem2" style="width: 20%;" >Semester:</label>
+                                      <input type="text" id="sem2" name="sem2" value="{{this.sem}}" style="width: 78%;"><br>
+
+                                      <label for="sec2" style="width: 20%;">Section:</label>
+                                      <input type="text" id="sec2" name="sec2" value="{{this.sec}}" style="width: 78%;"><br>
+
+                                      <label for="email2" style="width: 20%;">Email:</label>
+                                      <input type="text" id="email2" name="email2" value="{{this.email}}" style="width: 78%;"><br>
+
+                                      <label for="phone2" style="width: 20%;">Phone:</label>
+                                      <input type="text" id="phone2" name="phone2" value="{{this.phone}}" style="width: 78%;"><br>
+
+                                      <label for="size2" style="width: 20%;">T-shirt Size:</label>
+                                      <input type="text" id="size2" name="size2" value="{{this.size}}" style="width: 78%;"><br>
+
+                            
+                                        <label for="status2" style="width: 20%;">Status:</label>
+                                        <input type="text" id="status2" name="status2" value="{{this.status}}" style="width: 78%;"><br>
+                                      
+
+
+                                  </div>
+
+
+
+
+
+                          </div>
+                          <div class="modal-footer">
+                            <button type="submit" formaction="/auth/update" class="btn btn-primary">Save</button>
+                            <button type="submit" formaction="/auth/delete" class="btn btn-danger">Delete</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                          </div>
+                        </form>
+
+                        </div>
+                      </div>
+                    </div>
+
+
+
+
+
+
+
+
+
+                    </td>
+
+
+
+
+
+
+                </tr>
+            {{/each}}
+    {{/if}}
+        </table>
+        
+    </div>
+    <div style="position:relative; bottom:0%; width:100%;" class=" ds pt-4 ">
+        <div class=" text-center py-3">©2021. All rights reserved.</div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+</body>
+ 
+</html>

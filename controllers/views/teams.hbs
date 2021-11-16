@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <link rel="stylesheet" href="/style.css">
+    <title>NEUB Picnic Registration</title>
+</head>
+
+<body>
+
+    <nav>
+        <h1>NEUB Picnic Registration</h1>
+        <ul>
+            <li><a href="/">Register For Picnic</a></li>
+            <li><a href="/confirmlist">Confirmed List</a></li>
+            <li><a href="/gallery">Gallery</a></li>
+            <li><a href="/login">Admin Login</a></li>
+        </ul>
+    </nav>
+
+
+    <div class="container border mt-5">
+        <br>
+        <center>
+            <h3><u>Food Team</u></h3>
+            <h5>Advisor: {{dts.[0].advisor}}</h5>
+        </center>
+        <br><br>
+        <h4>Members:</h4>
+        <table class="table table table-hover">
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Semester</th>
+                <th>Section</th>
+                <th>Email</th>
+                <th>Phone</th>
+                
+            </tr>
+            {{#each data}}
+            <tr>
+                <td>{{this.sid}}</td>
+                <td>{{this.name}}</td>
+                <td>{{this.sem}}</td>
+                <td>{{this.sec}}</td>
+                <td>{{this.email}}</td>
+                <td>{{this.phone}}</td>
+                
+            </tr>
+
+            {{/each}}
+        </table>
+    </div>
+
+
+
+<br><br>
+
+
+
+
+    <div class="container border">
+        <br>
+        <center>
+            <h3><u>Game Team</u></h3>
+            <h5>Advisor: {{dts.[1].advisor}}</h5>
+        </center>
+        <br><br>
+        <h4>Members:</h4>
+        <table class="table table table-hover">
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Semester</th>
+                <th>Section</th>
+                <th>Email</th>
+                <th>Phone</th>
+                
+            </tr>
+            {{#each data2}}
+            <tr>
+                <td>{{this.sid}}</td>
+                <td>{{this.name}}</td>
+                <td>{{this.sem}}</td>
+                <td>{{this.sec}}</td>
+                <td>{{this.email}}</td>
+                <td>{{this.phone}}</td>
+                
+            </tr>
+
+            {{/each}}
+        </table>
+    </div>
+
+
+
+
+<br><br><br>
+
+
+
+    <div class="container border">
+        <br>
+        <center>
+            <h3><u>Security Team</u></h3>
+            <h5>Advisor: {{dts.[2].advisor}}</h5>
+        </center>
+        <br><br>
+        <h4>Members:</h4>
+        <table class="table table table-hover">
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Semester</th>
+                <th>Section</th>
+                <th>Email</th>
+                <th>Phone</th>
+                
+            </tr>
+            {{#each data3}}
+            <tr>
+                <td>{{this.sid}}</td>
+                <td>{{this.name}}</td>
+                <td>{{this.sem}}</td>
+                <td>{{this.sec}}</td>
+                <td>{{this.email}}</td>
+                <td>{{this.phone}}</td>
+               
+            </tr>
+
+            {{/each}}
+        </table>
+    </div>
+
+
+
+    <br><br><br>
+
+
+
+
+    <div class="container border">
+        <br>
+        <center>
+            <h3><u>Transportation Team</u></h3>
+            <h5>Advisor: {{dts.[3].advisor}}</h5>
+        </center>
+        <br><br>
+        <h4>Members:</h4>
+        <table class="table table table-hover">
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Semester</th>
+                <th>Section</th>
+                <th>Email</th>
+                <th>Phone</th>
+            </tr>
+            {{#each data4}}
+            <tr>
+                <td>{{this.sid}}</td>
+                <td>{{this.name}}</td>
+                <td>{{this.sem}}</td>
+                <td>{{this.sec}}</td>
+                <td>{{this.email}}</td>
+                <td>{{this.phone}}</td>
+            </tr>
+
+            {{/each}}
+        </table>
+    </div>
+
+    <br><br>
+
+
+
+
+    
+    
+    <div style=" bottom:0%; width:100%;" class=" ds pt-4 ">
+        <div class=" text-center py-3">©2021. All rights reserved.</div>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
